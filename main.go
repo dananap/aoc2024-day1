@@ -57,10 +57,10 @@ func main() {
   slices.Sort(leftList)
   slices.Sort(rightList)
 
-  dSum := 0.0
+  dSum := 0
 
   for i := range len(leftList) {
-    d := math.Abs(float64(leftList[i]) - float64(rightList[i]))
+    d := int(math.Abs(float64(leftList[i]) - float64(rightList[i])))
     dSum += d
   }
 
