@@ -4,9 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"log"
-	"math"
 	"os"
-	"slices"
 	"strconv"
 	"strings"
 )
@@ -54,16 +52,18 @@ func main() {
     log.Fatal("lengths don't match")
   }
 
-  slices.Sort(leftList)
-  slices.Sort(rightList)
+  similarityScore := 0
 
-  dSum := 0
-
-  for i := range len(leftList) {
-    d := int(math.Abs(float64(leftList[i]) - float64(rightList[i])))
-    dSum += d
+  for _, number := range leftList {
+    occurences := 0
+    for _, rightNumber := range rightList {
+      if number == rightNumber {
+        occurences ++
+      }
+    }
+    similarityScore += occurences*number
   }
 
-  fmt.Println(dSum)
+  fmt.Println(similarityScore)
 
 }
